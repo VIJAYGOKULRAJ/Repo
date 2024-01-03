@@ -19,6 +19,8 @@ namespace CRUD_Operation.Controllers
             _leadsRepository = leadsRepository;
 
         }
+
+        //Create a new lead
         [HttpPost]
         public IActionResult CreateLeads(Leads model)
         {
@@ -29,24 +31,26 @@ namespace CRUD_Operation.Controllers
 
                 return Ok("Successfully Created....!");
             }
-            return BadRequest();
-
-
-            
+            return BadRequest();    
         }
 
+
+        // Get the all leads
         [HttpGet]
         public async Task<IEnumerable<Leads>> Get()
         {
             return await _leadsRepository.GetAll();
         }
 
+        //get the leads by id
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var lead = _leadsRepository.GetById(id);
             return Ok(lead);
         }
+
+        // Edit the lead by using the id
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Leads model)
         {

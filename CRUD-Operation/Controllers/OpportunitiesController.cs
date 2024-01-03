@@ -52,9 +52,6 @@ namespace CRUD_Operation.Controllers
                 return Ok("Successfully Created....!");
             }
             return BadRequest();
-
-
-
         }
     }
 }
