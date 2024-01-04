@@ -1,7 +1,5 @@
 ﻿using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
-using CRUD.Services.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_Operation.Controllers
@@ -14,6 +12,7 @@ namespace CRUD_Operation.Controllers
         public OpportunitiesController(IOpportunities Opportunities)
         {
             _Opportunities = Opportunities;
+            
 
         }
         [HttpPut("ConvertToOpportunities/{id}")]

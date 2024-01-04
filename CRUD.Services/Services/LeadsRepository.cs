@@ -21,11 +21,11 @@ namespace CRUD.Services.Services
             _context = context;
             _validator = validator;
         }
-        private async Task Save()
+        private void Save()
         {
             try
             {
-                await _context.SaveChangesAsync();
+                 _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
             {
@@ -34,21 +34,20 @@ namespace CRUD.Services.Services
                 throw; // Re-throw the exception to propagate it further
             }
         }
-        public async Task LeadsAdd(Leads model)
-        { 
-           
-            var validationResult = await _validator.ValidateAsync(model);
+        public void LeadsAdd(Leads model)
+        {
+            var validationResult = _validator.Validate(model);
 
             if (!validationResult.IsValid)
             {
-              
                 var errors = validationResult.Errors.Select(error => error.ErrorMessage);
-               
                 throw new ValidationException($"Validation failed: {string.Join(", ", errors)}");
             }
+
             model.IsOpportunity = false;
-            await _context.Leads.AddAsync(model);
-            await Save();
+
+            _context.Leads.Add(model);
+            Save(); 
         }
 
 
@@ -92,7 +91,7 @@ namespace CRUD.Services.Services
                 }
 
           
-                await Save();
+                 Save();
             }
 
     }

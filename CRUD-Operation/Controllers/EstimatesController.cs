@@ -10,6 +10,7 @@ namespace CRUD_Operation.Controllers
     public class EstimatesController : ControllerBase
     {
         private readonly IEstimatesRepository _estimatesRepository;
+
         public EstimatesController(IEstimatesRepository estimatesRepository )
         {
             _estimatesRepository = estimatesRepository;
@@ -20,6 +21,53 @@ namespace CRUD_Operation.Controllers
         {
             var result = _estimatesRepository.EstimatesAdd(model);
             return Ok(result);
+        }
+
+        //Locked the estimate
+        [HttpPut("blockedTheEstimate/{id}")]
+        public IActionResult LockedTheEstimate(int id)
+        {
+            try
+            {
+                var result = _estimatesRepository.LockTheEstimate(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return StatusCode(500, "An error occurred while locking the estimate.");
+            }
+        }
+
+
+        //Change the default estimate will be true
+        [HttpPut("changeDefaultEstimate/{id}")]
+        public IActionResult ChangeTheDefaultEstimate(int id)
+        {
+            try
+            {
+                var result = _estimatesRepository.ChangeTheDefaultEstimate(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return StatusCode(500, "An error occurred while locking the estimate.");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult EditEstimate(int id , [FromBody] Estimates model)
+        {
+            try
+            {
+                var result = _estimatesRepository.EditEstimate(id, model);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

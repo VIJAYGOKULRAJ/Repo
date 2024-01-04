@@ -21,11 +21,11 @@ namespace CRUD.Services.Services
             _context = context;
             _validator = validator;
         }
-        private async Task Save()
+        private void Save()
         {
             try
             {
-                await _context.SaveChangesAsync();
+                 _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
             {
@@ -40,7 +40,7 @@ namespace CRUD.Services.Services
             if (details != null)
             {
                 details.IsOpportunity = true;
-                await Save();
+                 Save();
 
             }
         }
@@ -67,7 +67,7 @@ namespace CRUD.Services.Services
             }
             model.IsOpportunity = true;
             await _context.Leads.AddAsync(model);
-            await Save();
+            Save();
         }
     }
 }

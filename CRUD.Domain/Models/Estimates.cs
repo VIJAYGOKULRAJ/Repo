@@ -5,13 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+public enum EstimateStatus
+{
+    EstimateAccepted = 1,
+    EstimateRejected = 2,
+    EstimateVoid = 3,
+    ReadyForWorkOrder = 4
+}
 namespace CRUD.Domain.Models
 {
     public class Estimates
     {
         [Key]
-        public string EstimateId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int EstimateId { get; set; }
 
         [ForeignKey("Users")]
         public int UserId { get; set; }
@@ -27,8 +34,8 @@ namespace CRUD.Domain.Models
         public bool? DefaultEstimate { get; set; }
         public string? Type { get; set; }
         public int? Number { get; set; }
-        public string? Status { get; set; }
-        public DateTime? DateModified { get; set; } = DateTime.Now;
+        public EstimateStatus? Status { get; set; }
+        public DateTime? DateModified { get; set; } 
         public string? Fineprint { get; set; }
         public DateTime? StartDate { get; set; } = DateTime.Now;
         public bool? ChangeOrder { get; set; }
