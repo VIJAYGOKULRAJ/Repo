@@ -32,7 +32,7 @@ namespace CRUD.Services.Services
                 var ConvertTheEstimate = _leadsRepository.GetById(model.LeadsId);
                 if(ConvertTheEstimate.IsOpportunity == true)
                 {
-                    model.ChangeOrder = false;
+                    
                     model.Locked = false;
                     model.DefaultEstimate = false;
                     if (model.Status == EstimateStatus.ReadyForWorkOrder)
@@ -147,5 +147,7 @@ namespace CRUD.Services.Services
                 return "Default Estimate not changed because of locked";
             }
         }
+
+       
     }
 }

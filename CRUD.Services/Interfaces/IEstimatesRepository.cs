@@ -14,5 +14,6 @@ namespace CRUD.Services.Interfaces
          string LockTheEstimate(int id);
         string ChangeTheDefaultEstimate(int id);
         string EditEstimate(int id, Estimates model);
+        
     }
 }

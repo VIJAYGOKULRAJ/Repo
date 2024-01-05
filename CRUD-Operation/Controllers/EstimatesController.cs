@@ -19,6 +19,7 @@ namespace CRUD_Operation.Controllers
         [HttpPost]
         public IActionResult CreateEstimates(Estimates model)
         {
+            model.ChangeOrder = false;
             var result = _estimatesRepository.EstimatesAdd(model);
             return Ok(result);
         }
@@ -53,6 +54,21 @@ namespace CRUD_Operation.Controllers
             {
                 // Log the exception or handle it as needed
                 return StatusCode(500, "An error occurred while locking the estimate.");
+            }
+        }
+
+        [HttpPost("addEstimateWithChangeOrder")]
+        public IActionResult AddEstimateWithChangeOrder (Estimates model)
+        {
+            try
+            {
+                model.ChangeOrder = true;
+                var result = _estimatesRepository.EstimatesAdd(model);
+                return Ok(result);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
