@@ -10,8 +10,8 @@ namespace CRUD.Services.Interfaces
     public interface IEstimatesRepository
     {
         public string EstimatesAdd(Estimates model);
-
-         string LockTheEstimate(int id);
+        Estimates GetByLeadsId(int id);
+        string LockTheEstimate(int id);
         string ChangeTheDefaultEstimate(int id);
         string EditEstimate(int id, Estimates model);
         

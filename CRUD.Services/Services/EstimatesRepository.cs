@@ -60,6 +60,11 @@ namespace CRUD.Services.Services
             }
         }
 
+        public Estimates GetByLeadsId(int id)
+        {
+            return _context.Estimates.FirstOrDefault(x => x.LeadsId == id);
+        }
+
 
         public string LockTheEstimate(int id)
         {

@@ -47,6 +47,8 @@ builder.Services.AddScoped<IOpportunities, OpportunitiesRepository>();
 
 builder.Services.AddScoped<IEstimatesRepository, EstimatesRepository>();
 
+builder.Services.AddScoped<IWorkOrdersRepository, WorkOrdersRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

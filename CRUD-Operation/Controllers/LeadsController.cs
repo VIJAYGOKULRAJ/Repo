@@ -22,19 +22,7 @@ namespace CRUD_Operation.Controllers
 
         }
 
-        //Create a new lead
-      /*  [HttpPost]
-        public IActionResult CreateLeads(Leads model)
-        {
-            if (ModelState.IsValid)
-            {
-
-                _leadsRepository.LeadsAdd(model);
-
-                return Ok("Successfully Created....!");
-            }
-            return BadRequest();    
-        }*/
+        
 
         //leads add simultaneously added users
         [HttpPost("userWhileAddLeads")]
@@ -80,7 +68,7 @@ namespace CRUD_Operation.Controllers
                     };
                     _leadsRepository.LeadsAdd(newLead);
 
-                    return Ok("Successfully Created....!");
+                    return Ok("Successfully Created User and Leads....!");
                 }
                     else
                     {
@@ -96,7 +84,7 @@ namespace CRUD_Operation.Controllers
                         };
                         _leadsRepository.LeadsAdd(newLead);
 
-                        return Ok("Successfully Created....!");
+                        return Ok("Successfully Created Leads....!");
                     }
                 
                   

@@ -20,20 +20,14 @@ namespace CRUD.Domain.Models
         public string PhoneNumber { get; set; }
         public bool IsAdmin { get; set; }
         public string CreatedBy { get; set; }  
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public string UpdatedBy { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; } = DateTime.UtcNow;
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string Country { get; set; }
         public string County { get; set; }
 
-        public Users()
-    {
-        // Set default values in the constructor
-        CreatedDate = DateTime.UtcNow;
-        UpdatedDate = DateTime.UtcNow;
-    }
-
+       
     }
 }

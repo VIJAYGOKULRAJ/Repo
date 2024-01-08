@@ -65,7 +65,7 @@ namespace CRUD.Services.Services
         }
 
             public async Task EditLeads(int id, Leads model)
-            {
+    {
 
                 var existingLead = await _context.Leads.FindAsync(id);
 
